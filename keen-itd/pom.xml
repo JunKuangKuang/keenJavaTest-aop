@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+       <artifactId>keenJavaTest-aop</artifactId>
+        <groupId>xyz.clzly</groupId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>keen-itd</artifactId>
+
+    <properties>
+        <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
+    </properties>
+    <dependencies>
+        <!--aspectj依赖-->
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjrt</artifactId>
+            <version>1.8.13</version>
+        </dependency>
+
+    </dependencies>
+    <build>
+        <plugins>
+            <!--aspectj编译-->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>aspectj-maven-plugin</artifactId>
+                <version>1.11</version>
+                <configuration>
+                    <!--对应编译器版本-->
+                    <complianceLevel>1.8</complianceLevel>
+                    <!--对应java1.8-->
+                    <source>1.8</source>
+                    <!--对应class文件版本-->
+                    <target>1.8</target>
+                    <!--展示信息-->
+                    <showWeaveInfo>true</showWeaveInfo>
+                    <!--忽略警告-->
+                    <Xlint>ignore</Xlint>
+                    <!--设置通用编码-->
+                    <encoding>UTF-8</encoding>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <!--编织主类-->
+                            <goal>compile</goal>
+                            <!--编织测试类-->
+                            <goal>test-compile</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!--运行-->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>1.4.0</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>java</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <!-- executable指的是要执行什么样的命令 -->
+                    <executable>java</executable>
+                    <arguments>
+                        <!-- 这是通用编码-->
+                        <argument>-Dfile.encoding=utf-8</argument>
+                        <!--添加javaagent属性-->
+                        <argument>-javaagent:/Users/keen/.m2/repositories/org/aspectj/aspectjweaver/1.8.13/aspectjweaver-1.8.13.jar</argument>
+                        <!-- 这是classpath属性，其值就是下面的<classpath/> -->
+                        <argument>-classpath</argument>
+                        <!-- 这是exec插件最有价值的地方，关于工程的classpath并不需要手动指定，它将由exec自动计算得出 -->
+                        <classpath/>
+                        <!-- 程序入口，主类名称 -->
+                        <argument>KeenMain</argument>
+                    </arguments>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>

@@ -1,32 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
+		 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
 
-    <groupId>xyz.clzly</groupId>
-    <artifactId>keenJavaTest-aop</artifactId>
-    <packaging>pom</packaging>
-    <version>1.0.0-SNAPSHOT</version>
-    <modules>
-        <module>keen-helloworld</module>
-        <module>keen-advice</module>
-<!--        <module>keen-priority</module>-->
-<!--        <module>keen-pointcut</module>-->
-<!--        <module>keen-thisandtarget</module>-->
-<!--        <module>keen-args</module>-->
-<!--        <module>keen-if</module>-->
-<!--        <module>keen-annotation</module>-->
-<!--        <module>keen-annotation-ltw</module>-->
-<!--        <module>keen-annotation-ltw-demo</module>-->
-<!--        <module>keen-itd</module>-->
-<!--        <module>keen-wtd</module>-->
-<!--        <module>keen-declarsoft</module>-->
-<!--        <module>keen-LTW</module>-->
-    </modules>
-    <properties>
-        <maven.compiler.source>8</maven.compiler.source>
-        <maven.compiler.target>8</maven.compiler.target>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    </properties>
+	<groupId>xyz.clzly</groupId>
+	<artifactId>keenJavaTest-aop</artifactId>
+	<packaging>pom</packaging>
+	<version>1.0.0-SNAPSHOT</version>
+	<modules>
+		<!--https://www.clzly.xyz/2021/Aspect/f50842f9/-->
+		<module>keen-helloworld</module>
+		<!--https://www.clzly.xyz/2021/Aspect/c01f3a39/-->
+		<module>keen-advice</module>
+		<!--https://www.clzly.xyz/2021/Aspect/9accde31/-->
+		<module>keen-annotation</module>
+		<module>keen-annotation-ltw</module>
+		<!---->
+		<module>keen-itd</module>
+		<module>keen-wtd</module>
+		<module>keen-declarsoft</module>
+
+		<!--        <module>keen-priority</module>-->
+		<!--        <module>keen-pointcut</module>-->
+		<!--        <module>keen-thisandtarget</module>-->
+		<!--        <module>keen-args</module>-->
+		<!--        <module>keen-if</module>-->
+
+		<!--        <module>keen-annotation-ltw-demo</module>-->
+
+		<!--        <module>keen-LTW</module>-->
+	</modules>
+	<properties>
+		<maven.compiler.source>8</maven.compiler.source>
+		<maven.compiler.target>8</maven.compiler.target>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
 </project>

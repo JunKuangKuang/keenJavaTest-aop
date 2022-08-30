@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE aspectj PUBLIC
+        "-//AspectJ//DTD//EN"
+        "http://www.eclipse.org/aspectj/dtd/aspectj.dtd">
+<aspectj>
+    <!--切面会被织入xyz.clzly及其子包下的所有类。-->
+    <weaver options="-Xlint:ignore">
+        <include within="xyz.clzly..*"/>
+        <exclude within=""/>
+    </weaver>
+    <aspects>
+        <!-- 向编织器声明一个切面,只支持java文件，不支持aj文件 ，除非切换编译器javac为ajc-->
+        <aspect name="xyz.clzly.aspect.KeenAspectWTD"/>
+    </aspects>
+</aspectj>
+

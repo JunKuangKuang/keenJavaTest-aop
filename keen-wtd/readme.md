@@ -1,0 +1,1 @@
+**织入声明**（weave-time declaration）
