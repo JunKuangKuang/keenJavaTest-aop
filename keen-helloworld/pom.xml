@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>keenTest-aop</artifactId>
+        <groupId>xyz.clzly</groupId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>keen-helloworld</artifactId>
+
+    <properties>
+        <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
+    </properties>
+    <dependencies>
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjrt</artifactId>
+            <version>1.8.13</version>
+        </dependency>
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjweaver</artifactId>
+            <version>1.8.13</version>
+        </dependency>
+    </dependencies>
+    <!--编译期织入-->
+    <!--<build>
+        <plugins>
+            &lt;!&ndash;aspectj编译&ndash;&gt;
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>aspectj-maven-plugin</artifactId>
+                <version>1.11</version>
+                <configuration>
+                    &lt;!&ndash;对应编译器版本&ndash;&gt;
+                    <complianceLevel>1.8</complianceLevel>
+                    &lt;!&ndash;对应java1.8&ndash;&gt;
+                    <source>1.8</source>
+                    &lt;!&ndash;对应class文件版本&ndash;&gt;
+                    <target>1.8</target>
+                    &lt;!&ndash;展示信息&ndash;&gt;
+                    <showWeaveInfo>true</showWeaveInfo>
+                    &lt;!&ndash;忽略警告&ndash;&gt;
+                    <Xlint>ignore</Xlint>
+                    &lt;!&ndash;设置通用编码&ndash;&gt;
+                    <encoding>UTF-8</encoding>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            &lt;!&ndash;编织主类&ndash;&gt;
+                            <goal>compile</goal>
+                            &lt;!&ndash;编织测试类&ndash;&gt;
+                            <goal>test-compile</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            &lt;!&ndash;运行&ndash;&gt;
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>1.4.0</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>java</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    &lt;!&ndash; executable指的是要执行什么样的命令 &ndash;&gt;
+                    <executable>java</executable>
+                    <arguments>
+                        &lt;!&ndash; 这是通用编码&ndash;&gt;
+                        <argument>-Dfile.encoding=utf-8</argument>
+                        &lt;!&ndash; 这是classpath属性，其值就是下面的<classpath/> &ndash;&gt;
+                        <argument>-classpath</argument>
+                        &lt;!&ndash;工程的classpath不需要手动指定，将由exec自动计算得出 &ndash;&gt;
+                        <classpath/>
+                        &lt;!&ndash; 程序入口，主类名称 &ndash;&gt;
+                        <argument>xyz.clzly.KeenMain</argument>
+                    </arguments>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>-->
+    <!--JVM加载期织入-->
+    <build>
+        <plugins>
+            <!--运行-->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>1.4.0</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>java</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <!-- executable指的是要执行什么样的命令 -->
+                    <executable>java</executable>
+                    <arguments>
+                        <!-- 这是通用编码-->
+                        <argument>-Dfile.encoding=utf-8</argument>
+                        <!--添加javaagent属性，数值就是本地仓库中aspectjweaver的jar包所在-->
+                        <!--<argument>-javaagent:"D:\MavenRepository\org\aspectj\aspectjweaver\1.8.13\aspectjweaver-1.8.13.jar"</argument>-->
+                        <argument>-javaagent:/Users/keen/.m2/repository/org/aspectj/aspectjweaver/1.8.13/aspectjweaver-1.8.13.jar</argument>
+                        <!-- 这是classpath属性，其值就是下面的<classpath/> -->
+                        <argument>-classpath</argument>
+                        <!-- 这是exec插件最有价值的地方，关于工程的classpath并不需要手动指定，它将由exec自动计算得出 -->
+                        <classpath/>
+                        <!-- 程序入口，主类名称 -->
+                        <argument>xyz.clzly.KeenMain</argument>
+                    </arguments>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>

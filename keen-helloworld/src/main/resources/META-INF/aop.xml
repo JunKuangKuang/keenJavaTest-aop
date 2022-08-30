@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aspectj>
+    <aspects>
+        <!-- 向编织器声明一个切面,只支持java文件，不支持aj文件 ，除非切换编译器-->
+        <aspect name="xyz.clzly.aspect.KeenAspect"/>
+    </aspects>
+</aspectj> 
