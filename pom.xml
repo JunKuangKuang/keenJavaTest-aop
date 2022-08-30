@@ -10,7 +10,7 @@
     <version>1.0.0-SNAPSHOT</version>
     <modules>
         <module>keen-helloworld</module>
-<!--        <module>keen-advice</module>-->
+        <module>keen-advice</module>
 <!--        <module>keen-priority</module>-->
 <!--        <module>keen-pointcut</module>-->
 <!--        <module>keen-thisandtarget</module>-->
