@@ -14,6 +14,8 @@
 		<!--https://www.clzly.xyz/2021/Aspect/c01f3a39/-->
 		<module>keen-advice</module>
 		<module>keen-pointcut</module>
+		<module>keen-args</module>
+		<module>keen-if</module>
 		<!--https://www.clzly.xyz/2021/Aspect/9accde31/-->
 		<module>keen-annotation</module>
 		<module>keen-annotation-ltw</module>
@@ -25,8 +27,7 @@
 		<!--        <module>keen-priority</module>-->
 
 		<!--        <module>keen-thisandtarget</module>-->
-		<!--        <module>keen-args</module>-->
-		<!--        <module>keen-if</module>-->
+
 
 		<!--        <module>keen-annotation-ltw-demo</module>-->
 
