@@ -23,6 +23,7 @@
 		<!--https://www.clzly.xyz/2021/Aspect/9accde31/-->
 		<module>keen-annotation</module>
 		<module>keen-annotation-ltw</module>
+		<module>keen-annotation-ltw2</module>
 		<!--https://www.clzly.xyz/2021/Aspect/c9465688/-->
 		<module>keen-itd</module>
 		<module>keen-wtd</module>
@@ -33,7 +34,7 @@
 
 
 
-		<!--        <module>keen-annotation-ltw-demo</module>-->
+
 
 		<!--        <module>keen-LTW</module>-->
 	</modules>
