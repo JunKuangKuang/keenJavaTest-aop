@@ -28,15 +28,24 @@
 		<module>keen-annotation-ltw</module>
 		<module>keen-annotation-ltw2</module>
 
-		<!--https://www.clzly.xyz/2021/Aspect/c9465688/-->
+		<!--https://www.clzly.xyz/2021/Aspect/c9465688/
+		静态横切
+		-->
 		<module>keen-itd</module>
 		<module>keen-wtd</module>
 		<module>keen-declarsoft</module>
+		<!--https://www.clzly.xyz/2021/Aspect/89bc5823/
+		Spring集成Aspect
+		-->
+		<module>keen-springAOP</module>
 
-		<!--https://www.clzly.xyz/2021/Aspect/7e61fe0e/-->
+		<!--https://www.clzly.xyz/2021/Aspect/7e61fe0e/
+		优先级
+		-->
 		<module>keen-priority</module>
 
 
+		<!--自行测试-->
 		<module>keen-LTW</module>
 	</modules>
 	<properties>
