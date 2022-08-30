@@ -33,10 +33,11 @@
 		<module>keen-wtd</module>
 		<module>keen-declarsoft</module>
 
+		<!--https://www.clzly.xyz/2021/Aspect/7e61fe0e/-->
 		<module>keen-priority</module>
 
 
-		<!--        <module>keen-LTW</module>-->
+		<module>keen-LTW</module>
 	</modules>
 	<properties>
 		<maven.compiler.source>8</maven.compiler.source>
