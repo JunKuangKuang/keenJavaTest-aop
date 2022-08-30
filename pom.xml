@@ -20,20 +20,20 @@
 		<module>keen-args</module>
 		<module>keen-if</module>
 		<module>keen-thisandtarget</module>
-		<!--https://www.clzly.xyz/2021/Aspect/9accde31/-->
+
+		<!--https://www.clzly.xyz/2021/Aspect/9accde31/
+		自定义注解
+		-->
 		<module>keen-annotation</module>
 		<module>keen-annotation-ltw</module>
 		<module>keen-annotation-ltw2</module>
+
 		<!--https://www.clzly.xyz/2021/Aspect/c9465688/-->
 		<module>keen-itd</module>
 		<module>keen-wtd</module>
 		<module>keen-declarsoft</module>
 
-		<!--        <module>keen-priority</module>-->
-
-
-
-
+		<module>keen-priority</module>
 
 
 		<!--        <module>keen-LTW</module>-->
