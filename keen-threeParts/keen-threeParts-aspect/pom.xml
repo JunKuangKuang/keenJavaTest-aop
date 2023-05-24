@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+
+    <artifactId>keen-threeParts-aspect</artifactId>
+    <groupId>xyz.clzly</groupId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>jar</packaging>
+
+    <properties>
+        <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <disruptor.version>3.4.4</disruptor.version>
+        <log4j-slf4j-impl.version>2.15.0</log4j-slf4j-impl.version>
+    </properties>
+
+    <dependencies>
+        <!--切面依赖-->
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjrt</artifactId>
+            <version>1.8.13</version>
+        </dependency>
+
+        <!--对外Api包，是一种日志框架，单独的话缺少实现无法应用-->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>1.7.25</version>
+        </dependency>
+
+        <!--异步依赖,需要使用log4j2的AsyncLogger需要包含disruptor-->
+        <dependency>
+            <groupId>com.lmax</groupId>
+            <artifactId>disruptor</artifactId>
+            <version>${disruptor.version}</version>
+        </dependency>
+
+        <!--桥接包log4j-slf4j-impl起到适配的作用，版本须对应log4j-core的版本-->
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-slf4j-impl</artifactId>
+            <version>${log4j-slf4j-impl.version}</version>
+        </dependency>
+
+        <!--JSON序列化依赖-->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>1.2.75</version>
+        </dependency>
+    </dependencies>
+<!--    <build>-->
+<!--        &lt;!&ndash;<finalName>keen</finalName>&ndash;&gt;-->
+<!--        <plugins>-->
+<!--            <plugin>-->
+<!--                <groupId>org.apache.maven.plugins</groupId>-->
+<!--                <artifactId>maven-assembly-plugin</artifactId>-->
+<!--                <version>3.2.0</version>-->
+<!--                <configuration>-->
+
+<!--                    &lt;!&ndash;指定自定义的打包方式&ndash;&gt;-->
+<!--                    &lt;!&ndash;<descriptors>&ndash;&gt;-->
+<!--                    &lt;!&ndash;    <descriptor>src/main/resources/assembly/keen-jar-with-dependencies.xml</descriptor>&ndash;&gt;-->
+<!--                    &lt;!&ndash;</descriptors>&ndash;&gt;-->
+
+<!--                    &lt;!&ndash;指定默认的打包方式&ndash;&gt;-->
+<!--                    <descriptorRefs>-->
+<!--                        <descriptorRef>jar-with-dependencies</descriptorRef>-->
+<!--                    </descriptorRefs>-->
+
+<!--                </configuration>-->
+
+<!--                &lt;!&ndash;executions标签表示在执行package打包时，执行assembly:single&ndash;&gt;-->
+<!--                <executions>-->
+<!--                    <execution>-->
+<!--                        <id>make-assembly</id>-->
+<!--                        &lt;!&ndash;绑定到package生命周期阶段上&ndash;&gt;-->
+<!--                        <phase>package</phase>-->
+<!--                        <goals>-->
+<!--                            <goal>single</goal>-->
+<!--                        </goals>-->
+<!--                    </execution>-->
+<!--                </executions>-->
+<!--            </plugin>-->
+<!--        </plugins>-->
+<!--    </build>-->
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-shade-plugin</artifactId>
+                <version>3.2.1</version>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>shade</goal>
+                        </goals>
+                        <configuration>
+                            <!--保留原项目的jar包和pom.xml-->
+                            <shadedArtifactAttached>true</shadedArtifactAttached>
+                            <!--指定尾缀-->
+                            <shadedClassifierName>keen-jar-with-dependencies</shadedClassifierName>
+                            <!--在打包过程中对文件进行处理-->
+                            <transformers>
+<!--                                <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">-->
+<!--                                    &lt;!&ndash;指定程序入口，MANIFEST.MF中的Main-Class&ndash;&gt;-->
+<!--                                    <mainClass>xyz.clzly.keen.date.KeenDate</mainClass>-->
+<!--                                </transformer>-->
+                                <!--如果多个jar包在META-INF文件夹下含有相同的文件，那么需要将他们合并到一个文件里-->
+                                <transformer implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
+                                    <resource>META-INF/aop.xml</resource>
+                                </transformer>
+
+                            </transformers>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>

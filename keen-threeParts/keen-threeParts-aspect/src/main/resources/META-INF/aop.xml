@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE aspectj PUBLIC
+        "-//AspectJ//DTD//EN"
+        "http://www.eclipse.org/aspectj/dtd/aspectj.dtd">
+<aspectj>
+    <aspects>
+        <!-- 向编织器声明一个切面，只支持java文件，不支持aj文件 ，除非切换编译器-->
+        <aspect name="xyz.clzly.aspect.KeenPrintTimeAndArgsAspect"/>
+    </aspects>
+</aspectj>
