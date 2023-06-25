@@ -1,0 +1,16 @@
+server:
+  port: 8080
+  servlet:
+#     和pom文件中的finalName标签值一样才行
+    context-path: /clzly
+  tomcat:
+    threads:
+      min-spare: 100
+      max: 1500
+    # 最大等待队列长度
+    accept-count: 500
+    # 最大连接数
+    max-connections: 5000
+    # 连接超时 10s
+    connection-timeout: 10000
+
