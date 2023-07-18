@@ -92,6 +92,13 @@
             <groupId>xyz.clzly</groupId>
             <version>1.0.0-SNAPSHOT</version>
         </dependency>
+
+<!--3.5 引入JSON序列化依赖给切面使用-->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>1.2.75</version>
+        </dependency>
     </dependencies>
 
     <!--4. 编译插件    -->

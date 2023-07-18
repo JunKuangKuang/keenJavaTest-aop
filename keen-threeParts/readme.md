@@ -8,6 +8,9 @@ keen-threeParts-client作为客户端模块，就是纯粹地调用服务模块�
 
 keen-threeParts-aspect作为切面，**需要在不侵入原有代码的前提下**，进行织入，提供入参出参的打印和运行时间的统计。
 
+需要注意的是，在META-INF/aop.xml文件的weaver标签内，应该把切面所在路径和切入目标所在路径都加入进去！！！
+本样例中，只是因为两者的路径一样所以看起来是一条。
+
 keen-threeParts-client-war作为客户端war部署模块，就是用springboot打包成war类型之后在tomcat上面运行服务。
 
 java -Dfile.encoding=UTF-8 -javaagent:C:\Users\Administrator\Documents\channelsoft\MavenRepo\org\aspectj\aspectjweaver\1.8.13\aspectjweaver-1.8.13.jar -cp "./keen-threeParts-aspect-1.0-SNAPSHOT.jar; %CLASSPATH%"  -jar  compare-1.0.jar
